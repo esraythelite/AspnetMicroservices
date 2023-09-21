@@ -30,13 +30,6 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-//var configuration = app.Services.GetRequiredService<IConfiguration>();
-//var cacheSettingsValue = configuration.GetValue<string>("CacheSettings:ConnectionString");
-
-//builder.Services.AddStackExchangeRedisCache(options =>
-//                                            {
-//                                                options.Configuration = cacheSettingsValue;
-//                                            });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
