@@ -24,7 +24,6 @@ builder.Services.AddSwaggerGen(c =>
                                 {
                                     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
                                 });
-
 var app = builder.Build();
 
 
