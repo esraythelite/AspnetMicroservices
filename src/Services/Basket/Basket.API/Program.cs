@@ -1,4 +1,6 @@
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
+using Discount.Grpc.Protos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
@@ -20,6 +22,11 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
+    (o => o.Address = new Uri(Configuration["GrpsSettings:DiscountUrl"]));
+
+builder.Services.AddScoped<DiscountGrpcService>();
+
 builder.Services.AddSwaggerGen(c =>
                                 {
                                     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
