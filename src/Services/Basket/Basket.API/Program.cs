@@ -22,8 +22,9 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
-    (o => o.Address = new Uri(Configuration["GrpsSettings:DiscountUrl"]));
+    (o => o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
 
 builder.Services.AddScoped<DiscountGrpcService>();
 
